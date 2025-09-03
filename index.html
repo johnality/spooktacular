@@ -17,8 +17,13 @@ h2 { font-family: 'Amatic SC', cursive; font-size: 2em; font-weight: normal; mar
 .modal { display: none; position: fixed; z-index: 10; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; }
 .modal-content { background: #222; padding: 20px; border-radius: 10px; max-width: 700px; color: #fff; text-align: left; position: relative; }
 .modal-body { display: flex; gap: 20px; }
-.poster img { height: 100%; width: auto; border-radius: 8px; }
-.film-info { flex: 1; }
+.poster img {
+  max-height: 300px; /* limit the height */
+  max-width: 200px;  /* limit the width */
+  width: auto;
+  height: auto;
+  border-radius: 8px;
+}.film-info { flex: 1; }
 .film-info h3 { margin: 0 0 10px; }
 .stats { display: flex; gap: 15px; align-items: center; margin-bottom: 5px; }
 .stats span { display: flex; align-items: center; gap: 5px; }
@@ -30,7 +35,7 @@ h2 { font-family: 'Amatic SC', cursive; font-size: 2em; font-weight: normal; mar
 </style>
 </head>
 <body>
-<h1>HORROR ADVENT CALENDAR 2025</h1>
+<h1>HORROR ADVENT CALENDAR</h1>
 <h2>30 nights of terror... click a box if you dare...</h2>
 <div class="grid" id="calendar"></div>
 
