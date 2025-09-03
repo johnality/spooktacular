@@ -53,16 +53,17 @@ h2 {
   background: #222;
   padding: 20px;
   border-radius: 10px;
-  width: 450px;
-  aspect-ratio: 1 / 1;
+  width: 450px;          /* width = height */
+  height: 450px;         /* force square modal */
   color: #fff;
   text-align: left;
   position: relative;
   font-size: 1.625rem;
   font-family: 'Lora', serif;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-direction: row;   /* poster left, info right */
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 /* Close Button */
@@ -103,30 +104,41 @@ h2 {
 /* Modal Body */
 .modal-body {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;   /* side by side */
   gap: 15px;
   height: 100%;
-  align-items: center;
+  width: 100%;
+  align-items: flex-start;
 }
 
 /* Poster */
 .poster img {
-  max-height: 60%;
+  max-height: 100%;      /* fills modal height */
   width: auto;
   border-radius: 8px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 /* Film Info */
 .film-info {
   flex: 1;
-  width: 100%;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
+
+
+  
+
+
+
+
+
+
+
+  
 /* Title & Year */
 #modalTitle { 
   font-size: 3rem;
