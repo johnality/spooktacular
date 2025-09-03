@@ -170,12 +170,16 @@ h2 {
 .stats img.icon { width: 30px; height: 30px; }
 
 /* Tags */
-.tags { margin-top: 10px; font-style: italic; color: #fff; text-align: center; }
+.tags { margin-top: 10px; font-style: italic; color: #fff; text-align: left; }
 
 /* Streaming Logos */
 .streaming-logo { margin-top: 10px; text-align: center; }
-.streaming-logo img { max-height: 40px; width: auto; }
-</style>
+.streaming-logo img { 
+  width: 80px;    /* fixed width for all logos */
+  height: auto;   /* keep aspect ratio */
+  margin-right: 10px; /* optional spacing if multiple logos */
+}
+  </style>
 </head>
 <body>
 <h1>HORROR ADVENT CALENDAR</h1>
@@ -224,32 +228,32 @@ const films = [
     runtime: "91 min",
     rottenScore: "84%",
     letterboxdScore: "3.1",
-    description: "Thrilling addition to the mythology - an artist’s sanity unravels as he learns about Candyman",
+    description: "Thrilling addition to the mythology - an artist’s sanity unravels as he explores the history of Candyman.",
     tags: ["Supernatural", "Slasher", "Psychological"],
     streaming: "images/peacock_logo.png"
   },
 
 
- {title: "Terrifier", year: 2016, image: "images/terrifier_scene.jpg", poster: "images/terrifier_poster.jpg", runtime: "84 min", rottenScore: "63%", letterboxdScore: "2.4", description: "A maniacal clown serves up gorey mayhem on Halloween night", tags: ["Slasher", "Gore"], streaming: "images/peacock_logo.png" }, 
-  { title: "The Thing", year: 1982, image: "images/thing_scene.jpg", poster: "images/thing_poster.jpg", runtime: "109 min", rottenScore: "85%", letterboxdScore: "4.1", description: "Grim, tense, terrifying. Paranoia takes over when an Antarctic research team discovers a form-changing alien", tags: ["Psychological", "Body", "Monster"], streaming: "images/peacock_logo.png" }, 
-  { title: "The Texas Chainsaw Massacre", year: 1974, image: "images/texas_scene.jpg", poster: "images/texas_poster.jpg", runtime: "83 min", rottenScore: "84%", letterboxdScore: "3.8", description: "Start-to-finish suspense! Demented butchers terrorize victims in rural Texas.", tags: ["Slasher", "Gore", "Folk"], streaming: "images/peacock_logo.png" }, 
+ {title: "Terrifier", year: 2016, image: "images/terrifier_scene.jpg", poster: "images/terrifier_poster.jpg", runtime: "84 min", rottenScore: "63%", letterboxdScore: "2.4", description: "A maniacal clown serves up gorey mayhem on Halloween night", tags: ["Slasher"], streaming: "images/peacock_logo.png" }, 
+  { title: "The Thing", year: 1982, image: "images/thing_scene.jpg", poster: "images/thing_poster.jpg", runtime: "109 min", rottenScore: "85%", letterboxdScore: "4.1", description: "Grim, tense, terrifying. Paranoia takes over when an Antarctic research team discovers a form-changing alien", tags: ["Psychological", "Body Horror", "Supernatural"], streaming: "images/peacock_logo.png" }, 
+  { title: "The Texas Chainsaw Massacre", year: 1974, image: "images/texas_scene2.jpg", poster: "images/texas_poster.jpg", runtime: "83 min", rottenScore: "84%", letterboxdScore: "3.8", description: "Start-to-finish suspense! Demented butchers terrorize victims in rural Texas.", tags: ["Slasher", "Folk Horror"], streaming: "images/peacock_logo.png" }, 
   { title: "Prom Night", year: 1980, image: "images/prom_scene.jpg", poster: "images/prom_poster.jpg", runtime: "93 min", rottenScore: "45%", letterboxdScore: "2.6", description: "A masked killer seeks revenge on high schoolers who accidentally caused a death.", tags: ["Slasher", "B-Movie"], streaming: "images/peacock_logo.png" }, 
   { title: "To the Devil a Daughter", year: 1976, image: "images/daughter_scene.jpg", poster: "images/daughter_poster.jpg", runtime: "95 min", rottenScore: "45%", letterboxdScore: "3.0", description: "An occult novelist battles satanists to save the soul of a young girl.", tags: ["Supernatural", "Occult"], streaming: "images/peacock_logo.png" }, 
   { title: "You're Next", year: 2011, image: "images/next_scene2.jpg", poster: "images/next_poster2.jpg", runtime: "94 min", rottenScore: "79%", letterboxdScore: "3.3", description: "An energetic mix of brutal gore and black humor. A wealthy family battles a mysterious gang of killers", tags: ["Slasher", "Mystery"], streaming: "images/peacock_logo.png" }, 
-  { title: "The Love Witch", year: 2016, image: "images/lovewitch_scene.jpg", poster: "images/lovewitch_poster.jpg", runtime: "121 min", rottenScore: "95%", letterboxdScore: "3.5", description: "An absorbing homage to a bygone era... a beautiful witch casts love spells with deadly consequences.", tags: ["Supernatural", "Comedy"], streaming: "images/peacock_logo.png" }, 
+  { title: "The Love Witch", year: 2016, image: "images/lovewitch_scene.jpg", poster: "images/lovewitch_poster.jpg", runtime: "121 min", rottenScore: "95%", letterboxdScore: "3.5", description: "An absorbing homage to a bygone era... a beautiful witch casts love spells with deadly consequences.", tags: ["Supernatural", "Funny"], streaming: "images/peacock_logo.png" }, 
   { title: "Halloween II", year: 1981, image: "images/halloween2_scene.jpg", poster: "images/halloween2_poster.jpg", runtime: "92 min", rottenScore: "33%", letterboxdScore: "3.2", description: "Michael Myers picks up where he left off - slashing his way through a psychiatric hospital.", tags: ["Slasher"], streaming: "images/peacock_logo.png" }, 
-  { title: "Bride of Chucky", year: 1998, image: "images/chucky_scene.jpg", poster: "images/chucky_poster.jpg", runtime: "89 min", rottenScore: "47%", letterboxdScore: "3.2", description: "Chucky is reborn and rescued by his old flame. The campy fourth installment is a fan fave.", tags: ["Supernatural", "Slasher", "Comedy"], streaming: "images/peacock_logo.png" }, 
+  { title: "Bride of Chucky", year: 1998, image: "images/chucky_scene.jpg", poster: "images/chucky_poster.jpg", runtime: "89 min", rottenScore: "47%", letterboxdScore: "3.2", description: "Chucky is reborn and rescued by his old flame. The campy fourth installment is a fan fave.", tags: ["Supernatural", "Slasher", "Funny"], streaming: "images/peacock_logo.png" }, 
   { title: "Nope", year: 2022, image: "images/nope_scene.jpg", poster: "images/nope_poster.jpg", runtime: "130 min", rottenScore: "83%", letterboxdScore: "3.7", description: "Ambitiously original. Residents of a remote desert make an uncanny and chilling discovery.", tags: ["Supernatural"], streaming: "images/peacock_logo.png" }, 
-  { title: "The Devils", year: 1971, image: "images/devils_scene.jpg", poster: "images/devils_poster.jpg", runtime: "117 min", rottenScore: "70%", letterboxdScore: "4.2", description: "Grimly stylish and provocative. Hysteria occurs when a 17th century priest is accused of witchcraft.", tags: ["Psychological", "Occult"], streaming: "images/criterion_logo.png" }, 
-  { title: "Evil Dead II", year: 1987, image: "images/evil2_scene.jpg", poster: "images/evil2_poster.jpg", runtime: "84 min", rottenScore: "88%", letterboxdScore: "4.0", description: "Evil spirits. Cabin in the woods. The horror classic is reimagined as a dark comedy.", tags: ["Supernatural", "Gore", "Comedy"], streaming: "images/hbo_logo3.png" }, 
+  { title: "The Devils", year: 1971, image: "images/devils_scene2.jpg", poster: "images/devils_poster.jpg", runtime: "117 min", rottenScore: "70%", letterboxdScore: "4.2", description: "Grimly stylish and provocative. Hysteria occurs when a 17th century priest is accused of witchcraft.", tags: ["Psychological", "Occult"], streaming: "images/criterion_logo.png" }, 
+  { title: "Evil Dead II", year: 1987, image: "images/evil2_scene.jpg", poster: "images/evil2_poster.jpg", runtime: "84 min", rottenScore: "88%", letterboxdScore: "4.0", description: "Evil spirits. Cabin in the woods. Gore. The horror classic is reimagined as a dark comedy.", tags: ["Supernatural", "Funny"], streaming: "images/hbo_logo3.png" }, 
   { title: "The Brood", year: 1979, image: "images/brood_scene.jpg", poster: "images/brood_poster.jpg", runtime: "92 min", rottenScore: "81%", letterboxdScore: "3.6", description: "Bizarre and grotesque exploration of motherhood. A woman receives psychoplasmic therapy. Mutant children commit brutal attacks", tags: ["Psychological", "Occult"], streaming: "images/hbo_logo3.png" }, 
-  { title: "The Return of the Living Dead ", year: 1985, image: "images/return_scene.jpg", poster: "images/return_poster.jpg", runtime: "91 min", rottenScore: "69%", letterboxdScore: "3.8", description: "Silly 1980s punk take on the zombie genre", tags: ["Supernatural", "Zombie", "Comedy"], streaming: "images/hbo_logo3.png" }, 
+  { title: "The Return of the Living Dead ", year: 1985, image: "images/return_scene.jpg", poster: "images/return_poster.jpg", runtime: "91 min", rottenScore: "69%", letterboxdScore: "3.8", description: "A silly 1980s punk take on the zombie genre", tags: ["Supernatural", "Zombie", "Funny"], streaming: "images/hbo_logo3.png" }, 
   { title: "Kwaidan", year: 1964, image: "images/kwaidan_scene.jpg", poster: "images/kwaidan_poster.jpg", runtime: "183 min", rottenScore: "91%", letterboxdScore: "4.2", description: "Exquisitely designed and ambitious anthology of Japanese folk horror tales", tags: ["Supernatural", "Folk"], streaming: "images/hbo_logo3.png" }, 
-  { title: "House", year: 1977, image: "images/house_scene.jpg", poster: "images/house_poster.jpg", runtime: "88 min", rottenScore: "90%", letterboxdScore: "4.0", description: "Gleefully demented! Girls visit a remote mansion where supernatural events occur", tags: ["Psychological", "Occult"], streaming: "images/hbo_logo3.png" }, 
+  { title: "House", year: 1977, image: "images/house_scene.jpg", poster: "images/house_poster.jpg", runtime: "88 min", rottenScore: "90%", letterboxdScore: "4.0", description: "Gleefully demented! Girls visit a remote mansion where supernatural events occur", tags: ["Supernatural", "Funny"], streaming: "images/hbo_logo3.png" }, 
   { title: "Malignant", year: 2021, image: "images/malignant_scene.jpg", poster: "images/malignant_poster.jpg", runtime: "111 min", rottenScore: "77%", letterboxdScore: "3.1", description: "Gory thrills and a bonkers twist. A woman is tormented by visions of grisly murders", tags: ["Psychological", "Slasher", "Supernatural"], streaming: "images/hbo_logo3.png" }, 
-  { title: "Freaks", year: 1932, image: "images/freaks_scene.jpg", poster: "images/freaks_poster.jpg", runtime: "66 min", rottenScore: "95%", letterboxdScore: "3.9", description: "Still manages to shock, frighten and touch viewers. A beautiful gymnast agrees to marry the leader of deformed circus performers", tags: ["Psychological", "Body"], streaming: "images/hbo_logo3.png" }, 
-  { title: "Vampyr", year: 1932, image: "images/vampyr_scene.jpg", poster: "images/vampyr_poster.jpg", runtime: "73 min", rottenScore: "98%", letterboxdScore: "3.8", description: "Unsettling and disorienting. A student of the occult encounters the supernatural in a French village", tags: ["Supernatural", "Folk"], streaming: "images/hbo_logo3.png" }, 
-  { title: "Killer Klowns from Outer Space", year: 1988, image: "images/klowns_scene.jpg", poster: "images/klowns_poster.jpg", runtime: "86 min", rottenScore: "79%", letterboxdScore: "3.4", description: "Dark goofy fun. Deadly aliens disguised as clowns descend on a rural town", tags: ["Supernatural", "Comedy", "B-Movie"], streaming: "images/hbo_logo3.png" },
+  { title: "Freaks", year: 1932, image: "images/freaks_scene.jpg", poster: "images/freaks_poster.jpg", runtime: "66 min", rottenScore: "95%", letterboxdScore: "3.9", description: "Still manages to shock, frighten and touch viewers. A beautiful gymnast agrees to marry the leader of deformed circus performers", tags: ["Psychological", "Body Horror"], streaming: "images/hbo_logo3.png" }, 
+  { title: "Vampyr", year: 1932, image: "images/vampyr_scene.jpg", poster: "images/vampyr_poster.jpg", runtime: "73 min", rottenScore: "98%", letterboxdScore: "3.8", description: "Unsettling and disorienting. A student of the occult encounters the supernatural in a French village", tags: ["Supernatural", "Folk Horror"], streaming: "images/hbo_logo3.png" }, 
+  { title: "Killer Klowns from Outer Space", year: 1988, image: "images/klowns_scene.jpg", poster: "images/klowns_poster.jpg", runtime: "86 min", rottenScore: "79%", letterboxdScore: "3.4", description: "Dark goofy fun. Deadly aliens disguised as clowns descend on a rural town", tags: ["Supernatural", "Funny", "B-Movie"], streaming: "images/hbo_logo3.png" },
 
       {    title: "You Won't Be Alone",    year: 2022,
     image: "images/alone_scene.jpg",
@@ -258,7 +262,7 @@ const films = [
     rottenScore: "93%",
     letterboxdScore: "3.7",
     description: "In 19th century Macedonia, a feral witch experiences life inside the bodies of others",
-    tags: ["Supernatural", "Folk"],
+    tags: ["Supernatural", "Folk Horror"],
     streaming: "images/peacock_logo.png"},
      {    title: "The Blackening",
     year: 2022,
@@ -268,7 +272,7 @@ const films = [
     rottenScore: "87%",
     letterboxdScore: "3.1",
     description: "Thoughtful satire that skewers horror tropes. Seven friends find themselves trapped in a cabin with a killer",
-    tags: ["Slasher", "Mystery", "Comedy"],
+    tags: ["Slasher", "Funny"],
     streaming: "images/peacock_logo.png"},
      {    title: "The Endless",
     year: 2017,
@@ -300,7 +304,7 @@ const films = [
     rottenScore: "93%",
     letterboxdScore: "2.7",
     description: "Unapologetically silly and entertaining. An AI-powered doll becomes terrifyingly overprotective of an orphaned girl",
-    tags: ["AI", "Comedy"],
+    tags: ["Techno Horror", "Funny"],
     streaming: "images/peacock_logo.png"},
 
     {  title: "Gonjiam: Haunted Asylum",
@@ -311,7 +315,7 @@ const films = [
     rottenScore: "92%",
     letterboxdScore: "3.3",
     description: "The crew of a web series visits an abandoned asylum and encounters a nightmare",
-    tags: ["Found Footage", "Mystery"],
+    tags: ["Found Footage", "Supernatural"],
     streaming: "images/prime_logo.png"  },
 
       {    title: "Evil Dead Rise",
@@ -322,7 +326,7 @@ const films = [
     rottenScore: "85%",
     letterboxdScore: "3.1",
     description: "Two estranged sisters battle for survival against the nightmarish possessed versions of their family",
-    tags: ["Supernatural", "Gore"],
+    tags: ["Supernatural"],
     streaming: "images/hbo_logo3.png"  },
       {    title: "The Silence of the Lambs",
     year: 1991,
@@ -332,7 +336,7 @@ const films = [
     rottenScore: "95%",
     letterboxdScore: "4.3",
     description: "Part psychological thriller, part all-out horror. A psychotic genius helps the FBI track a killer",
-    tags: ["Psychological", "Thriller"],
+    tags: ["Psychological"],
     streaming: "images/hbo_logo3.png"},
       {    title: "It Follows",
     year: 2014,
@@ -342,7 +346,7 @@ const films = [
     rottenScore: "95%",
     letterboxdScore: "3.4",
     description: "Smart, original and terrifying. A young woman is pursued by an sinister being",
-    tags: ["Supernatural", "Psychological"],
+    tags: ["Supernatural"],
     streaming: "images/hbo_logo3.png"},
   
   // ... repeat all other films and placeholders as before
