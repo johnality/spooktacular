@@ -8,37 +8,39 @@
 body { font-family: Arial, sans-serif; background-color: #111; color: #f5f5f5; text-align: center; margin: 0; padding: 20px; }
 h1 { font-size: 2.8em; margin-bottom: 0.2em; color: orange; font-family: 'Nosifer', cursive; }
 h2 { font-family: 'Amatic SC', cursive; font-size: 2em; font-weight: normal; margin-bottom: 20px; color: #ddd; }
-.grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; max-width: 1100px; margin: 0 auto; }
-.square { background: #222 url('https://upload.wikimedia.org/wikipedia/commons/9/9b/Emoji_u1f383.svg') center/60% no-repeat; border: 2px solid #444; border-radius: 10px; aspect-ratio: 1/1; min-height: 150px; cursor: pointer; position: relative; transition: transform 0.2s; overflow: hidden; }
+
+.grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; max-width: 1400px; margin: 0 auto; }
+
+.square { background: #222 url('https://upload.wikimedia.org/wikipedia/commons/9/9b/Emoji_u1f383.svg') center/60% no-repeat; border: 2px solid #444; border-radius: 10px; aspect-ratio: 1/1; min-height: 200px; cursor: pointer; position: relative; transition: transform 0.2s; overflow: hidden; }
 .square:hover { transform: scale(1.05); }
 .square span { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 4em; color: #fff; font-family: 'Creepster', cursive; background: none; padding: 0; }
+
 .revealed { display: flex; align-items: center; justify-content: center; overflow: hidden; background: #000; }
 .revealed img { width: 100%; height: 100%; object-fit: cover; cursor: pointer; }
+
+/* Modal */
 .modal { display: none; position: fixed; z-index: 10; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; }
-.modal-content { background: #222; padding: 20px; border-radius: 10px; max-width: 700px; color: #fff; text-align: left; position: relative; }
+.modal-content { background: #222; padding: 20px; border-radius: 10px; max-width: 700px; color: #fff; text-align: left; position: relative; font-size: 1.1em; }
 .modal-body { display: flex; gap: 20px; }
-.poster img {
-  max-height: 300px; /* limit the height */
-  max-width: 200px;  /* limit the width */
-  width: auto;
-  height: auto;
-  border-radius: 8px;
-}.film-info { flex: 1; }
-.film-info h3 { margin: 0 0 10px; }
-.stats { display: flex; gap: 15px; align-items: center; margin-bottom: 5px; }
+
+.poster img { max-height: 300px; width: auto; border-radius: 8px; }
+.film-info { flex: 1; }
+.film-info h3 { margin: 0 0 10px; font-size: 2.4em; }
+.stats { display: flex; gap: 15px; align-items: center; margin-bottom: 5px; font-size: 1.1em; }
 .stats span { display: flex; align-items: center; gap: 5px; }
-.stats img.icon { width: 20px; height: 20px; }
-.tags { margin-top: 10px; font-style: italic; color: #fff; }
+.stats img.icon { width: 24px; height: 24px; }
+.tags { margin-top: 10px; font-style: italic; color: #fff; font-size: 1em; }
 .close { position: absolute; top: 10px; right: 15px; font-size: 1.5em; cursor: pointer; color: orange; }
 .squareResetBtn { position: absolute; top: 5px; right: 5px; font-size: 0.8em; padding: 2px 5px; border: none; border-radius: 5px; cursor: pointer; background: orange; color: #111; }
 #resetBtn { margin-top: 20px; font-size: 1.2em; padding: 10px 20px; cursor: pointer; border-radius: 8px; border: none; background-color: orange; color: #111; font-family: 'Creepster', cursive; }
 </style>
 </head>
 <body>
-<h1>HORROR ADVENT CALENDAR</h1>
+<h1>HORROR ADVENT CALENDAR 2025</h1>
 <h2>30 nights of terror... click a box if you dare...</h2>
 <div class="grid" id="calendar"></div>
 
+<!-- Modal -->
 <div class="modal" id="filmModal">
   <div class="modal-content">
     <span class="close" id="closeModal">&times;</span>
@@ -67,58 +69,131 @@ const calendar = document.getElementById('calendar');
 let openedSquares = JSON.parse(localStorage.getItem('openedSquares')) || {};
 
 const films = [
-  { title: "Candyman", year: 2021, image: "images/candyman_scene.jpg", poster: "images/candyman_poster2.jpg", runtime: "91 min", rottenScore: "84%", letterboxdScore: "3.1", description: "A thrilling, incisive addition to the mythology - an artist’s sanity unravels as he explores the history of Candyman", tags: ["Supernatural", "Slasher", "Psychological"] },
-  { title: "Terrifier", year: 2016, image: "images/terrifier_scene.jpg", poster: "images/terrifier_poster.jpg", runtime: "84 min", rottenScore: "63%", letterboxdScore: "2.4", description: "All about splashy kills - a maniacal clown terrorizes young women on Halloween", tags: ["Slasher", "Gore", "Teen"] },
-  { title: "The Thing", year: 1982, image: "images/thing_scene.jpg", poster: "images/thing_poster.jpg", runtime: "109 min", rottenScore: "85%", letterboxdScore: "4.1", description: "Grim, tense, terrifying - an Antarctic research team discovers a form-changing alien", tags: ["Psychological", "Body", "Monster"] },
-  ...Array.from({length: 27}, (_, i) => ({ title: "Coming Soon", year: "", image: "images/placeholder.jpg", poster: "images/placeholder_poster.jpg", runtime: "", rottenScore: "", letterboxdScore: "", description: "Surprise film revealed later!", tags: [] }))
+  {
+    title: "Candyman",
+    year: 2021,
+    image: "images/candyman_scene.jpg",
+    poster: "images/candyman_poster2.jpg",
+    runtime: "91 min",
+    rottenScore: "84%",
+    letterboxdScore: "3.1",
+    description: "A thrilling, incisive addition to the mythology - an artist’s sanity unravels as he explores the history of Candyman",
+    tags: ["Supernatural", "Slasher", "Psychological"]
+  },
+  {
+    title: "Terrifier",
+    year: 2016,
+    image: "images/terrifier_scene.jpg",
+    poster: "images/terrifier_poster.jpg",
+    runtime: "84 min",
+    rottenScore: "63%",
+    letterboxdScore: "2.4",
+    description: "All about splashy kills - a maniacal clown terrorizes young women on Halloween",
+    tags: ["Slasher", "Gore", "Teen"]
+  },
+  {
+    title: "The Thing",
+    year: 1982,
+    image: "images/thing_scene.jpg",
+    poster: "images/thing_poster.jpg",
+    runtime: "109 min",
+    rottenScore: "85%",
+    letterboxdScore: "4.1",
+    description: "Grim, tense, terrifying - an Antarctic research team discovers a form-changing alien",
+    tags: ["Psychological", "Body", "Monster"]
+  },
+  // 27 original placeholders
+  ...Array.from({length: 27}, (_, i) => ({
+    title: `Coming Soon`,
+    year: "",
+    image: "images/placeholder.jpg",
+    poster: "images/placeholder_poster.jpg",
+    runtime: "",
+    rottenScore: "",
+    letterboxdScore: "",
+    description: "Surprise film revealed later!",
+    tags: []
+  })),
+  // 10 extra placeholders for new films
+  ...Array.from({length: 10}, (_, i) => ({
+    title: `New Film ${i+1}`,
+    year: "",
+    image: "images/placeholder.jpg",
+    poster: "images/placeholder_poster.jpg",
+    runtime: "",
+    rottenScore: "",
+    letterboxdScore: "",
+    description: "Description goes here",
+    tags: []
+  }))
 ];
 
-function createSquare(film,i){
+function createSquare(film, i){
   const square = document.createElement('div');
   square.classList.add('square');
   square.dataset.index = i;
   square.innerHTML = `<span>${i+1}</span>`;
-  if(openedSquares[i]) revealSquare(square,film);
-  square.addEventListener('click',()=>{ if(!square.classList.contains('revealed')){ revealSquare(square,film); openedSquares[i]=true; localStorage.setItem('openedSquares',JSON.stringify(openedSquares)); }});
+  if(openedSquares[i]) revealSquare(square, film);
+  square.addEventListener('click', ()=>{
+    if(!square.classList.contains('revealed')){
+      revealSquare(square, film);
+      openedSquares[i] = true;
+      localStorage.setItem('openedSquares', JSON.stringify(openedSquares));
+    }
+  });
   return square;
 }
 
-function revealSquare(square,film){
+function revealSquare(square, film){
   square.classList.add('revealed');
   square.innerHTML = `<img src="${film.image}" alt="${film.title}" title="${film.title}"><button class="squareResetBtn">×</button>`;
-  square.querySelector('img').addEventListener('click',e=>{ e.stopPropagation(); openModal(film); });
-  square.querySelector('.squareResetBtn').addEventListener('click',e=>{
-    e.stopPropagation(); square.classList.remove('revealed'); square.innerHTML=`<span>${parseInt(square.dataset.index)+1}</span>`; delete openedSquares[square.dataset.index]; localStorage.setItem('openedSquares',JSON.stringify(openedSquares));
+  const img = square.querySelector('img');
+  img.addEventListener('click', e=>{
+    e.stopPropagation();
+    openModal(film);
+  });
+  const resetBtn = square.querySelector('.squareResetBtn');
+  resetBtn.addEventListener('click', e=>{
+    e.stopPropagation();
+    square.classList.remove('revealed');
+    square.innerHTML = `<span>${parseInt(square.dataset.index)+1}</span>`;
+    delete openedSquares[square.dataset.index];
+    localStorage.setItem('openedSquares', JSON.stringify(openedSquares));
   });
 }
 
 films.forEach((film,i)=>calendar.appendChild(createSquare(film,i)));
 
-const modal=document.getElementById('filmModal');
-const closeModal=document.getElementById('closeModal');
-const modalPoster=document.getElementById('modalPoster');
-const modalTitle=document.getElementById('modalTitle');
-const modalDesc=document.getElementById('modalDesc');
-const runtimeSpan=document.getElementById('runtime');
-const rtScoreSpan=document.getElementById('rtScore');
-const lbScoreSpan=document.getElementById('lbScore');
-const tagsP=document.querySelector('.tags');
+// Modal
+const modal = document.getElementById('filmModal');
+const closeModal = document.getElementById('closeModal');
+const modalPoster = document.getElementById('modalPoster');
+const modalTitle = document.getElementById('modalTitle');
+const modalDesc = document.getElementById('modalDesc');
+const runtimeSpan = document.getElementById('runtime');
+const rtSpan = document.getElementById('rtScore');
+const lbSpan = document.getElementById('lbScore');
+const tagsP = document.querySelector('.tags');
 
 function openModal(film){
-  modalPoster.src=film.poster;
-  modalTitle.textContent=`${film.title}${film.year?` (${film.year})`:''}`;
-  modalDesc.textContent=film.description;
-  runtimeSpan.textContent=film.runtime;
-  rtScoreSpan.innerHTML=`<img class="icon" src="images/rotten_icon.png"> ${film.rottenScore}`;
-  lbScoreSpan.innerHTML=`<img class="icon" src="images/letterboxd_icon.png"> ${film.letterboxdScore}`;
-  tagsP.textContent=`Tags: ${film.tags.join(' / ')}`;
-  modal.style.display='flex';
+  modalPoster.src = film.poster;
+  modalTitle.textContent = `${film.title}${film.year ? ` (${film.year})` : ''}`;
+  modalDesc.textContent = film.description;
+  runtimeSpan.textContent = film.runtime;
+  rtSpan.innerHTML = `<img class="icon" src="images/rotten_icon.png"> ${film.rottenScore}`;
+  lbSpan.innerHTML = `<img class="icon" src="images/letterboxd_icon.png"> ${film.letterboxdScore}`;
+  tagsP.textContent = film.tags.join(" / ");
+  modal.style.display = "flex";
 }
 
-closeModal.onclick=()=>{ modal.style.display='none'; };
-window.onclick=e=>{ if(e.target===modal) modal.style.display='none'; };
+closeModal.onclick = () => { modal.style.display = 'none'; };
+window.onclick = (e) => { if(e.target === modal) modal.style.display = 'none'; };
 
-document.getElementById('resetBtn').addEventListener('click',()=>{ localStorage.removeItem('openedSquares'); location.reload(); });
+// Reset calendar button
+document.getElementById('resetBtn').addEventListener('click', ()=>{
+  localStorage.removeItem('openedSquares');
+  location.reload();
+});
 </script>
 </body>
 </html>
