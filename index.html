@@ -6,8 +6,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Amatic+SC&display=swap" rel="stylesheet">
 <style>
 body { font-family: Arial, sans-serif; background-color: #111; color: #f5f5f5; text-align: center; margin: 0; padding: 20px; }
-h1 { font-size: 3.8em; margin-bottom: 0.2em; color: orange; font-family: 'Nosifer', cursive; }
-h2 { font-family: 'Amatic SC', cursive; font-size: 4em; font-weight: normal; margin-bottom: 20px; color: #ddd; }
+h1 { font-size: 3.8em; margin-bottom: 0.1em; color: orange; font-family: 'Nosifer', cursive; }
+h2 { font-family: 'Amatic SC', cursive; font-size: 4em; font-weight: normal; margin-bottom: 15px; color: #ddd; }
 
 .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; max-width: 1400px; margin: 0 auto; }
 
@@ -27,9 +27,9 @@ h2 { font-family: 'Amatic SC', cursive; font-size: 4em; font-weight: normal; mar
 .modal { display: none; position: fixed; z-index: 10; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; }
 .modal-content {
   background: #222;
-  padding: 20px;
+  padding: 30px;
   border-radius: 10px;
-  max-width: 700px;
+  max-width: 900px;
   color: #fff;
   text-align: left;
   position: relative;
@@ -51,7 +51,7 @@ h2 { font-family: 'Amatic SC', cursive; font-size: 4em; font-weight: normal; mar
   
   .modal-body { display: flex; gap: 20px; }
 
-.poster img { max-height: 300px; width: auto; border-radius: 8px; }
+.poster img { max-height: 450px; width: auto; border-radius: 8px; } /* 50% bigger */
 .film-info { flex: 1; }
 .film-info h3 { margin: 0 0 10px; font-size: 2.4em; }
 .stats { display: flex; gap: 15px; align-items: center; margin-bottom: 5px; font-size: 1.1em; }
@@ -60,7 +60,7 @@ h2 { font-family: 'Amatic SC', cursive; font-size: 4em; font-weight: normal; mar
 .tags { margin-top: 10px; font-style: italic; color: #fff; font-size: 1em; }
 .streaming-logo {
   margin-top: 20px;
-  text-align: center;
+  text-align: left;
 }
 
 .streaming-logo img {
