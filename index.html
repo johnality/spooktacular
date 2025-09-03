@@ -20,8 +20,31 @@ h2 { font-family: 'Amatic SC', cursive; font-size: 4em; font-weight: normal; mar
 
 /* Modal */
 .modal { display: none; position: fixed; z-index: 10; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; }
-.modal-content { background: #222; padding: 20px; border-radius: 10px; max-width: 700px; color: #fff; text-align: left; position: relative; font-size: 1.1em; }
-.modal-body { display: flex; gap: 20px; }
+.modal-content {
+  background: #222;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 700px;
+  color: #fff;
+  text-align: left;
+  position: relative;
+  font-size: 1.3rem;
+  font-family: 'Lora', serif;  /* new */
+}
+
+#modalTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+#modalYear {
+  font-size: 1rem;
+  opacity: 0.8;
+  margin-bottom: 15px;
+}
+  
+  .modal-body { display: flex; gap: 20px; }
 
 .poster img { max-height: 300px; width: auto; border-radius: 8px; }
 .film-info { flex: 1; }
@@ -77,7 +100,7 @@ const films = [
     runtime: "91 min",
     rottenScore: "84%",
     letterboxdScore: "3.1",
-    description: "A thrilling, incisive addition to the mythology - an artist’s sanity unravels as he explores the history of Candyman",
+    description: "Thrilling addition to the mythology - an artist’s sanity unravels as he learns about Candyman",
     tags: ["Supernatural", "Slasher", "Psychological"]
   },
   {
@@ -88,8 +111,8 @@ const films = [
     runtime: "84 min",
     rottenScore: "63%",
     letterboxdScore: "2.4",
-    description: "All about splashy kills - a maniacal clown terrorizes young women on Halloween",
-    tags: ["Slasher", "Gore", "Teen"]
+    description: "A maniacal clown serves up gorey mayhem on Halloween night",
+    tags: ["Slasher", "Gore"]
   },
   {
     title: "The Thing",
@@ -99,7 +122,7 @@ const films = [
     runtime: "109 min",
     rottenScore: "85%",
     letterboxdScore: "4.1",
-    description: "Grim, tense, terrifying - an Antarctic research team discovers a form-changing alien",
+    description: "Grim, tense and terrifying - paranoia takes over when an Antarctic research team discovers a form-changing alien",
     tags: ["Psychological", "Body", "Monster"]
   },
 
@@ -112,7 +135,7 @@ const films = [
     runtime: "83 min",
     rottenScore: "84%",
     letterboxdScore: "3.8",
-    description: "Start-to-finish suspense in a low-budget exploitation classic - a house of demented butchers terrorize young adults ",
+    description: "Start-to-finish suspense - a house of demented butchers terrorize their victims",
     tags: ["Slasher", "Gore", "Folk"]
   },
 
@@ -125,8 +148,8 @@ const films = [
     runtime: "93 min",
     rottenScore: "45%",
     letterboxdScore: "2.6",
-    description: "Horror aficionados might have a ball - a masked killer seeks revenge on high school bullies",
-    tags: ["Slasher", "Teen", "B-Movie"]
+    description: "A masked killer seeks revenge on high school bullies",
+    tags: ["Slasher", "B-Movie"]
   },
 
       {
@@ -137,7 +160,7 @@ const films = [
     runtime: "95 min",
     rottenScore: "45%",
     letterboxdScore: "3.0",
-    description: "ADD MORE - an occult novelist battles to save the soul of a young girl from Satanists",
+    description: "A novelist battles to save the soul of a young girl from a satanist priest",
     tags: ["Supernatural", "Occult"]
   },
 
@@ -150,7 +173,7 @@ const films = [
     runtime: "94 min",
     rottenScore: "79%",
     letterboxdScore: "3.3",
-    description: "An energetic mix of brutal gore and black humor - a family fights back a gang of killers",
+    description: "Energetic mix of brutal gore and black humor - a wealthy family battles a mysterious gang of killers",
     tags: ["Slasher", "Mystery"]
   },
 
@@ -163,7 +186,7 @@ const films = [
     runtime: "121 min",
     rottenScore: "95%",
     letterboxdScore: "3.5",
-    description: "An absorbing homage and meditation on sexism - a beautiful witch casts love spells with deadly consequences",
+    description: "An absorbing homage to a bygone era - a beautiful witch casts love spells with deadly consequences",
     tags: ["Supernatural", "Comedy"]
   },
   
