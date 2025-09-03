@@ -6,9 +6,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Amatic+SC&display=swap" rel="stylesheet">
 <style>
 body { font-family: Arial, sans-serif; background-color: #111; color: #f5f5f5; text-align: center; margin: 0; padding: 20px; }
-h1 { font-size: 3.8em; margin-bottom: 0.05em; color: orange; font-family: 'Nosifer', cursive; }
-h2 { font-family: 'Amatic SC', cursive; font-size: 4em; font-weight: normal; margin-bottom: 10px; color: #ddd; }
-
+h1 {
+  font-size: 3.8em;
+  margin-bottom: 0.1em;
+  color: orange;
+  font-family: 'Nosifer', cursive;
+}
+h2 {
+  font-family: 'Amatic SC', cursive;
+  font-size: 4em;
+  font-weight: normal;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #ddd;
+}
 .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; max-width: 1400px; margin: 0 auto; }
 
 .square { background: #222 url('https://upload.wikimedia.org/wikipedia/commons/9/9b/Emoji_u1f383.svg') center/60% no-repeat; border: 2px solid #444; border-radius: 10px; aspect-ratio: 1/1; min-height: 200px; cursor: pointer; position: relative; transition: transform 0.2s; overflow: hidden; }
@@ -24,46 +35,131 @@ h2 { font-family: 'Amatic SC', cursive; font-size: 4em; font-weight: normal; mar
 }
 
 /* Modal */
-.modal { display: none; position: fixed; z-index: 10; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; }
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+/* Modal Content - Square */
 .modal-content {
   background: #222;
-  padding: 40px;
+  padding: 20px;
   border-radius: 10px;
-  max-width: 1000px;
+  width: 450px;
+  aspect-ratio: 1 / 1;
   color: #fff;
   text-align: left;
   position: relative;
-  font-size: 1.625rem; /* 25% larger than original 1.3rem */
+  font-size: 1.625rem;
   font-family: 'Lora', serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
+/* Close Button */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: orange;
+}
+
+/* Reset Buttons */
+.squareResetBtn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 0.8em;
+  padding: 2px 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: orange;
+  color: #111;
+}
+#resetBtn {
+  margin-top: 20px;
+  font-size: 1.2em;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 8px;
+  border: none;
+  background-color: orange;
+  color: #111;
+  font-family: 'Creepster', cursive;
+}
+
+/* Modal Body */
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: 100%;
+  align-items: center;
+}
+
+/* Poster */
+.poster img {
+  max-height: 60%;
+  width: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* Film Info */
+.film-info {
+  flex: 1;
+  width: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Title & Year */
 #modalTitle { 
-  font-size: 3rem; /* 25% larger than original 2.4em */
+  font-size: 3rem;
   font-weight: 600;
   display: inline; 
+  text-align: center;
 }
 #modalYear { 
   font-size: 1rem; 
   opacity: 0.8;
   display: inline; 
   margin-left: 10px;
+  text-align: center;
 }
 
-.modal-body { display: flex; gap: 20px; }
-
-.poster img { max-height: 450px; width: auto; border-radius: 8px; } /* 50% bigger */
-.film-info { flex: 1; }
-.film-info p, .film-info .stats { font-size: 1.375rem; } /* 25% larger than original */
-.stats { display: flex; gap: 15px; align-items: center; margin-bottom: 5px; }
+/* Stats */
+.film-info p, .film-info .stats { font-size: 1.375rem; }
+.stats {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+}
 .stats span { display: flex; align-items: center; gap: 5px; }
-.stats img.icon { width: 30px; height: 30px; } /* 25% larger */
-.tags { margin-top: 10px; font-style: italic; color: #fff; }
-.streaming-logo { margin-top: 20px; text-align: left; }
-.streaming-logo img { max-height: 60px; width: auto; } /* 50% larger */
+.stats img.icon { width: 30px; height: 30px; }
 
-.close { position: absolute; top: 10px; right: 15px; font-size: 1.5em; cursor: pointer; color: orange; }
-.squareResetBtn { position: absolute; top: 5px; right: 5px; font-size: 0.8em; padding: 2px 5px; border: none; border-radius: 5px; cursor: pointer; background: orange; color: #111; }
-#resetBtn { margin-top: 20px; font-size: 1.2em; padding: 10px 20px; cursor: pointer; border-radius: 8px; border: none; background-color: orange; color: #111; font-family: 'Creepster', cursive; }
+/* Tags */
+.tags { margin-top: 10px; font-style: italic; color: #fff; text-align: center; }
+
+/* Streaming Logos */
+.streaming-logo { margin-top: 20px; text-align: center; }
+.streaming-logo img { max-height: 60px; width: auto; }
 </style>
 </head>
 <body>
@@ -97,6 +193,7 @@ h2 { font-family: 'Amatic SC', cursive; font-size: 4em; font-weight: normal; mar
 <button id="resetBtn">RESET CALENDAR</button>
 
 <script>
+// All your JS remains unchanged
 const calendar = document.getElementById('calendar');
 let openedSquares = JSON.parse(localStorage.getItem('openedSquares')) || {};
 
@@ -195,9 +292,46 @@ const films = [
     streaming: "images/prime_logo.png"
   },
 
+      {
+    title: "Evil Dead Rise",
+    year: 2023,
+    image: "images/rise_scene.jpg",
+    poster: "images/rise_poster.jpg",
+    runtime: "96 min",
+    rottenScore: "85%",
+    letterboxdScore: "3.1",
+    description: "Estranged sisters battle for survival against nightmarish possessed versions of their family",
+    tags: ["Supernatural", "Gore"],
+    streaming: "images/hbo_logo.png"
+  },
+      {
+    title: "The Silence of the Lambs",
+    year: 1991,
+    image: "images/silence_scene.jpg",
+    poster: "images/silence_poster.jpg",
+    runtime: "119 min",
+    rottenScore: "95%",
+    letterboxdScore: "4.3",
+    description: "Between psychological thriller and all-out horror - a psychotic cannibal helps the FBI track a killer",
+    tags: ["Psychological", "Thriller"],
+    streaming: "images/hbo_logo.png"
+  },
+      {
+    title: "It Follows",
+    year: 2014,
+    image: "images/follow_scene.jpg",
+    poster: "images/follow_poster.jpg",
+    runtime: "101 min",
+    rottenScore: "95%",
+    letterboxdScore: "3.4",
+    description: "Smart, original and terrifying - a young woman is pursued by an unknown sinister force",
+    tags: ["Supernatural", "Psychological"],
+    streaming: "images/hbo_logo.png"
+  },
   
   // ... repeat all other films and placeholders as before
 ];
+
 
 function createSquare(film, i){
   const square = document.createElement('div');
