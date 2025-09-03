@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>HORROR ADVENT CALENDAR 2025</title>
+  <title>HORROR ADVENT CALENDAR</title>
   <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Amatic+SC&display=swap" rel="stylesheet">
   <style>
     body {
@@ -29,18 +29,6 @@
       color: #ddd;
     }
 
-    #resetBtn {
-      margin-bottom: 20px;
-      font-size: 1.2em;
-      padding: 10px 20px;
-      cursor: pointer;
-      border-radius: 8px;
-      border: none;
-      background-color: orange;
-      color: #111;
-      font-family: 'Creepster', cursive;
-    }
-
     .grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -58,6 +46,7 @@
       cursor: pointer;
       position: relative;
       transition: transform 0.2s;
+      overflow: hidden;
     }
 
     .square:hover {
@@ -85,9 +74,9 @@
     }
 
     .revealed img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* fill the square */
       cursor: pointer;
     }
 
@@ -121,7 +110,8 @@
     }
 
     .poster img {
-      width: 150px;
+      height: 100%; /* fills modal height */
+      width: auto;
       border-radius: 8px;
     }
 
@@ -133,9 +123,15 @@
       margin: 0 0 10px;
     }
 
+    .stats {
+      display: flex;
+      gap: 15px;
+      align-items: center; /* aligns runtime with scores */
+      margin-bottom: 5px;
+    }
+
     .stats span {
-      margin-right: 15px;
-      display: inline-flex;
+      display: flex;
       align-items: center;
       gap: 5px;
     }
@@ -148,7 +144,7 @@
     .tags {
       margin-top: 10px;
       font-style: italic;
-      color: #ffb347;
+      color: #fff; /* white tags */
     }
 
     .close {
@@ -177,7 +173,6 @@
 <body>
   <h1>HORROR ADVENT CALENDAR 2025</h1>
   <h2>30 nights of terror... click a box if you dare...</h2>
-  <button id="resetBtn">Reset Calendar</button>
 
   <div class="grid" id="calendar"></div>
 
@@ -192,12 +187,12 @@
         <div class="film-info">
           <h3 id="modalTitle">Film Title (Year)</h3>
           <p class="stats">
+            <span id="runtime"></span>
             <span><img class="icon" src="images/rotten_icon.png"> RT%</span>
             <span><img class="icon" src="images/letterboxd_icon.png"> LB%</span>
-            <span>Runtime</span>
           </p>
           <p id="modalDesc">Description goes here</p>
-          <p class="tags">Tags: ...</p>
+          <p class="tags"></p>
         </div>
       </div>
     </div>
@@ -306,29 +301,12 @@
     const modalPoster = document.getElementById('modalPoster');
     const modalTitle = document.getElementById('modalTitle');
     const modalDesc = document.getElementById('modalDesc');
+    const runtimeSpan = document.getElementById('runtime');
+    const tagsP = document.querySelector('.tags');
 
     function openModal(film) {
       modalPoster.src = film.poster;
       modalTitle.textContent = `${film.title}${film.year ? ` (${film.year})` : ''}`;
       modalDesc.textContent = film.description;
-      document.querySelector(".stats").innerHTML = `
-        <span><img class="icon" src="images/rotten_icon.png"> ${film.rottenScore}</span>
-        <span><img class="icon" src="images/letterboxd_icon.png"> ${film.letterboxdScore}</span>
-        <span>Runtime: ${film.runtime}</span>
-      `;
-      document.querySelector(".tags").textContent = `Tags: ${film.tags.join(" / ")}`;
-      modal.style.display = "flex";
-    }
-
-    closeModal.onclick = () => { modal.style.display = 'none'; };
-    window.onclick = (e) => { if (e.target === modal) modal.style.display = 'none'; };
-
-    // Smooth reset button
-    const resetBtn = document.getElementById('resetBtn');
-    resetBtn.addEventListener('click', () => {
-      localStorage.removeItem('openedSquares');
-      location.reload();
-    });
-  </script>
-</body>
-</html>
+      runtimeSpan.textContent = film.runtime;
+      document.querySelector(".stats span:nth-child(2)").innerHTML = `<img class="icon" src
