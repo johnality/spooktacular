@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Horror Advent Calendar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #f5f5f5;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 0.2em;
+      color: orange;
+    }
+    h2 {
+      font-size: 1.2em;
+      font-weight: normal;
+      margin-bottom: 30px;
+      color: #ddd;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 15px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .square {
+      background: #222 url('https://upload.wikimedia.org/wikipedia/commons/9/9b/Emoji_u1f383.svg') center/60% no-repeat;
+      border: 2px solid #444;
+      border-radius: 10px;
+      height: 120px;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.2s;
+    }
+    .square:hover {
+      transform: scale(1.05);
+    }
+    .square span {
+      position: absolute;
+      bottom: 5px;
+      right: 10px;
+      font-size: 1.2em;
+      color: #fff;
+      background: rgba(0,0,0,0.6);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .revealed {
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .revealed img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+      cursor: pointer;
+    }
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: #222;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 500px;
+      color: #fff;
+      text-align: left;
+      position: relative;
+    }
+    .modal-content img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5em;
+      cursor: pointer;
+      color: orange;
+    }
+  </style>
+</head>
+<body>
+  <h1>Horror Advent Calendar</h1>
+  <h2>30 nights of terror — one film at a time...</h2>
+  
+  <div class="grid" id="calendar"></div>
+
+  <!-- Modal -->
+  <div class="modal" id="filmModal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <img id="modalImage" src="" alt="">
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc"></p>
+    </div>
+  </div>
+
+  <script>
+    // Example film data (replace with your real films)
+    const films = Array.from({length: 30}, (_, i) => ({
+      title: `Film ${i+1}`,
+      image: `https://via.placeholder.com/200x120?text=Film+${i+1}`,
+      description: `Description for Film ${i+1} goes here.`
+    }));
+
+    const calendar = document.getElementById('calendar');
+    const openedSquares = JSON.parse(localStorage.getItem('openedSquares')) || {};
+
+    films.forEach((film, i) => {
+      const square = document.createElement('div');
+      square.classList.add('square');
+      square.dataset.index = i;
+      square.innerHTML = `<span>${i+1}</span>`;
+      
+      // If already opened, reveal
+      if (openedSquares[i]) {
+        revealSquare(square, film);
+      }
+
+      square.addEventListener('click', () => {
+        if (!square.classList.contains('revealed')) {
+          revealSquare(square, film);
+          openedSquares[i] = true;
+          localStorage.setItem('openedSquares', JSON.stringify(openedSquares));
+        }
+      });
+      calendar.appendChild(square);
+    });
+
+    function revealSquare(square, film) {
+      square.classList.add('revealed');
+      square.innerHTML = `<img src="${film.image}" alt="${film.title}" title="${film.title}">`;
+      const img = square.querySelector('img');
+      img.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openModal(film);
+      });
+    }
+
+    // Modal handling
+    const modal = document.getElementById('filmModal');
+    const closeModal = document.getElementById('closeModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+
+    function openModal(film) {
+      modalImage.src = film.image;
+      modalTitle.textContent = film.title;
+      modalDesc.textContent = film.description;
+      modal.style.display = 'flex';
+    }
+    closeModal.onclick = () => { modal.style.display = 'none'; };
+    window.onclick = (e) => { if (e.target === modal) modal.style.display = 'none'; };
+  </script>
+</body>
+</html>
