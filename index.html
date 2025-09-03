@@ -53,15 +53,15 @@ h2 {
   background: #222;
   padding: 20px;
   border-radius: 10px;
-  width: 450px;          /* width = height */
-  height: 450px;         /* force square modal */
+  width: 500px;       /* width = height for square */
+  height: 500px;
   color: #fff;
   text-align: left;
   position: relative;
   font-size: 1.625rem;
   font-family: 'Lora', serif;
   display: flex;
-  flex-direction: row;   /* poster left, info right */
+  flex-direction: row;  /* poster left, info right */
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -104,8 +104,8 @@ h2 {
 /* Modal Body */
 .modal-body {
   display: flex;
-  flex-direction: row;   /* side by side */
-  gap: 15px;
+  flex-direction: row;   /* poster + info side by side */
+  gap: 20px;
   height: 100%;
   width: 100%;
   align-items: flex-start;
@@ -113,7 +113,7 @@ h2 {
 
 /* Poster */
 .poster img {
-  max-height: 100%;      /* fills modal height */
+  max-height: 450px;   /* keeps poster size like before */
   width: auto;
   border-radius: 8px;
   object-fit: contain;
