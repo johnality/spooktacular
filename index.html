@@ -53,7 +53,17 @@ h2 { font-family: 'Amatic SC', cursive; font-size: 4em; font-weight: normal; mar
 .stats span { display: flex; align-items: center; gap: 5px; }
 .stats img.icon { width: 24px; height: 24px; }
 .tags { margin-top: 10px; font-style: italic; color: #fff; font-size: 1em; }
-.close { position: absolute; top: 10px; right: 15px; font-size: 1.5em; cursor: pointer; color: orange; }
+.streaming-logo {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.streaming-logo img {
+  max-height: 40px;
+  width: auto;
+}
+  
+  .close { position: absolute; top: 10px; right: 15px; font-size: 1.5em; cursor: pointer; color: orange; }
 .squareResetBtn { position: absolute; top: 5px; right: 5px; font-size: 0.8em; padding: 2px 5px; border: none; border-radius: 5px; cursor: pointer; background: orange; color: #111; }
 #resetBtn { margin-top: 20px; font-size: 1.2em; padding: 10px 20px; cursor: pointer; border-radius: 8px; border: none; background-color: orange; color: #111; font-family: 'Creepster', cursive; }
 </style>
@@ -80,6 +90,9 @@ h2 { font-family: 'Amatic SC', cursive; font-size: 4em; font-weight: normal; mar
         </p>
         <p id="modalDesc">Description goes here</p>
         <p class="tags"></p>
+      <div id="modalStreaming" class="streaming-logo"></div>
+
+      
       </div>
     </div>
   </div>
@@ -102,6 +115,8 @@ const films = [
     letterboxdScore: "3.1",
     description: "Thrilling addition to the mythology - an artist’s sanity unravels as he learns about Candyman",
     tags: ["Supernatural", "Slasher", "Psychological"]
+    streaming: "images/peacock_logo.png"
+
   },
   {
     title: "Terrifier",
@@ -113,6 +128,8 @@ const films = [
     letterboxdScore: "2.4",
     description: "A maniacal clown serves up gorey mayhem on Halloween night",
     tags: ["Slasher", "Gore"]
+    streaming: "images/peacock_logo.png"
+
   },
   {
     title: "The Thing",
@@ -124,6 +141,8 @@ const films = [
     letterboxdScore: "4.1",
     description: "Grim, tense and terrifying - paranoia takes over when an Antarctic research team discovers a form-changing alien",
     tags: ["Psychological", "Body", "Monster"]
+    streaming: "images/peacock_logo.png"
+
   },
 
 
@@ -137,6 +156,8 @@ const films = [
     letterboxdScore: "3.8",
     description: "Start-to-finish suspense - a house of demented butchers terrorize their victims",
     tags: ["Slasher", "Gore", "Folk"]
+    streaming: "images/peacock_logo.png"
+
   },
 
 
@@ -150,6 +171,8 @@ const films = [
     letterboxdScore: "2.6",
     description: "A masked killer seeks revenge on high school bullies",
     tags: ["Slasher", "B-Movie"]
+      streaming: "images/peacock_logo.png"
+
   },
 
       {
@@ -162,6 +185,8 @@ const films = [
     letterboxdScore: "3.0",
     description: "A novelist battles to save the soul of a young girl from a satanist priest",
     tags: ["Supernatural", "Occult"]
+        streaming: "images/peacock_logo.png"
+
   },
 
 
@@ -175,6 +200,8 @@ const films = [
     letterboxdScore: "3.3",
     description: "Energetic mix of brutal gore and black humor - a wealthy family battles a mysterious gang of killers",
     tags: ["Slasher", "Mystery"]
+          streaming: "images/peacock_logo.png"
+
   },
 
 
@@ -188,24 +215,11 @@ const films = [
     letterboxdScore: "3.5",
     description: "An absorbing homage to a bygone era - a beautiful witch casts love spells with deadly consequences",
     tags: ["Supernatural", "Comedy"]
+          streaming: "images/peacock_logo.png"
+
   },
 
 
-
-
-
-
-
-        {
-    title: "The Love Witch",
-    year: 2016,
-    image: "images/lovewitch_scene.jpg",
-    poster: "images/lovewitch_poster.jpg",
-    runtime: "121 min",
-    rottenScore: "95%",
-    letterboxdScore: "3.5",
-    description: "An absorbing homage to a bygone era - a beautiful witch casts love spells with deadly consequences",
-    tags: ["Supernatural", "Comedy"]
   },
 
           {
@@ -218,6 +232,8 @@ const films = [
     letterboxdScore: "3.2",
     description: "Picks up where its predecessor left off - Michael Myers slashes his way through a psychiatric hospital",
     tags: ["Slasher"]
+             streaming: "images/peacock_logo.png"
+
   },
 
           {
@@ -230,6 +246,8 @@ const films = [
     letterboxdScore: "3.2",
     description: "Campy fourth installment - Chucky is reborn when his old flame rescues him",
     tags: ["Supernatural", "Slasher", "Comedy"]
+            streaming: "images/peacock_logo.png"
+
   },
 
           {
@@ -242,6 +260,8 @@ const films = [
     letterboxdScore: "3.7",
     description: "Ambitiously original - desert residents make an uncanny, chilling discovery",
     tags: ["Supernatural"]
+             streaming: "images/peacock_logo.png"
+
   },
 
           {
@@ -254,6 +274,8 @@ const films = [
     letterboxdScore: "4.2",
     description: "Grimly stylish and provocative - hysteria occurs when a 17th century priest is accused of witchcraft by a sexually repressed nun",
     tags: ["Psychological", "Occult"]
+             streaming: "images/criterion_logo.png"
+
   },
 
 
@@ -272,6 +294,8 @@ const films = [
     letterboxdScore: "4.0",
     description: "Horror classic reimagined as dark comedy of terrors - evil spirits possess a cabin in the woods",
     tags: ["Supernatural", "Gore", "Comedy"]
+               streaming: "images/hbo_logo.png"
+
   },
 
           {
@@ -284,6 +308,7 @@ const films = [
     letterboxdScore: "3.6",
     description: "Bizarre and grotesque exploration of motherhood - a woman receives psychoplasmic therapy while mutant children commit brutal attacks",
     tags: ["Psychological", "Occult"]
+              streaming: "images/hbo_logo.png"
   },
 
             {
@@ -296,6 +321,7 @@ const films = [
     letterboxdScore: "3.8",
     description: "Silly 80s punk take on the genre - toxic gas reanimates corpses into flesh-eating zombies",
     tags: ["Supernatural", "Zombie", "Comedy"]
+                streaming: "images/hbo_logo.png"
   },
           {
     title: "Kwaidan",
@@ -307,6 +333,7 @@ const films = [
     letterboxdScore: "4.2",
     description: "Exquisitely designed and ambitious anthology of Japanese folk horror tales",
     tags: ["Supernatural", "Folk"]
+              streaming: "images/hbo_logo.png"
   },
           {
     title: "House",
@@ -318,6 +345,7 @@ const films = [
     letterboxdScore: "4.0",
     description: "Gleefully demented - a group of girls visit a remote mansion where supernatural events immediately occur",
       tags: ["Psychological", "Occult"]
+              streaming: "images/hbo_logo.png"
   },
 
             {
@@ -330,6 +358,7 @@ const films = [
     letterboxdScore: "3.1",
     description: "Gory thrills and a bonkers twist - a woman is tormented by visions of grisly murders",
     tags: ["Psychological", "Slasher", "Supernatural"]
+                streaming: "images/hbo_logo.png"
   },
   
           {
@@ -342,6 +371,7 @@ const films = [
     letterboxdScore: "3.9",
     description: "Still manages to frighten, shock and even touch modern viewers - a beautiful trapeze artist agrees to marry the leader of deformed side-show performers",
     tags: ["Psychological", "Body"]
+              streaming: "images/hbo_logo.png"
   },
             {
     title: "Vampyr",
@@ -353,6 +383,7 @@ const films = [
     letterboxdScore: "3.8",
     description: "Unsettling and disorienting - a student of the occult encounters the supernatural in a French village",
     tags: ["Supernatural", "Folk"]
+                streaming: "images/hbo_logo.png"
   },
             {
     title: "Killer Klowns from Outer Space",
@@ -364,6 +395,7 @@ const films = [
     letterboxdScore: "3.4",
     description: "Darkly goofy fun - deadly aliens disguised as clowns descend on a rural town",
     tags: ["Supernatural", "Comedy", "B-Movie"]
+                streaming: "images/hbo_logo.png"
   },
 
   
