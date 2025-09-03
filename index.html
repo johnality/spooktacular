@@ -204,20 +204,43 @@
   </div>
 
   <script>
-    // Shuffle helper
-    function shuffleArray(array) {
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-      }
-      return array;
-    }
+    const calendar = document.getElementById('calendar');
+    let openedSquares = JSON.parse(localStorage.getItem('openedSquares')) || {};
 
-    // Example 30-slot films array (3 real + 27 placeholders)
     const films = [
-      { title: "The Thing", year: 1982, image: "images/thing_scene.jpg", poster: "images/thing_poster.jpg", runtime: "109 min", rottenScore: "85%", letterboxdScore: "4.4", description: "Grim, tense, terrifying - an Antarctic research team discovers a form-changing alien", tags: ["Psychological", "Monster", "Body"] },
-      { title: "Halloween", year: 1978, image: "images/halloween_scene.jpg", poster: "images/halloween_poster.jpg", runtime: "91 min", rottenScore: "96%", letterboxdScore: "4.0/5", description: "Michael Myers escapes and returns...", tags: ["Slasher"] },
-      { title: "The Exorcist", year: 1973, image: "images/exorcist_scene.jpg", poster: "images/exorcist_poster.jpg", runtime: "132 min", rottenScore: "83%", letterboxdScore: "4.2/5", description: "A young girl is possessed...", tags: ["Supernatural", "Horror"] },
+      {
+        title: "Candyman",
+        year: 2021,
+        image: "images/candyman_scene.jpg",
+        poster: "images/candyman_poster.jpg",
+        runtime: "91 min",
+        rottenScore: "84%",
+        letterboxdScore: "3.1",
+        description: "A thrilling, incisive addition to the mythology - an artist’s sanity unravels as he explores the history of Candyman",
+        tags: ["Supernatural", "Slasher", "Psychological"]
+      },
+      {
+        title: "Terrifier",
+        year: 2016,
+        image: "images/terrifier_scene.jpg",
+        poster: "images/terrifier_poster.jpg",
+        runtime: "84 min",
+        rottenScore: "63%",
+        letterboxdScore: "2.4",
+        description: "All about splashy kills - a maniacal clown terrorizes young women on Halloween",
+        tags: ["Slasher", "Gore", "Teen"]
+      },
+      {
+        title: "The Thing",
+        year: 1982,
+        image: "images/thing_scene.jpg",
+        poster: "images/thing_poster.jpg",
+        runtime: "109 min",
+        rottenScore: "85%",
+        letterboxdScore: "4.1",
+        description: "Grim, tense, terrifying - an Antarctic research team discovers a form-changing alien",
+        tags: ["Psychological", "Body", "Monster"]
+      },
       // 27 placeholders
       ...Array.from({length: 27}, (_, i) => ({
         title: `Coming Soon`,
@@ -231,13 +254,6 @@
         tags: []
       }))
     ];
-
-    // Persistent shuffle DISABLED - turn on later
-films.forEach((film, i) => calendar.appendChild(createSquare(film, i)));
-    }
-
-    const calendar = document.getElementById('calendar');
-    let openedSquares = JSON.parse(localStorage.getItem('openedSquares')) || {};
 
     function createSquare(film, i) {
       const square = document.createElement('div');
@@ -282,7 +298,7 @@ films.forEach((film, i) => calendar.appendChild(createSquare(film, i)));
       });
     }
 
-    shuffledFilms.forEach((film, i) => calendar.appendChild(createSquare(film, i)));
+    films.forEach((film, i) => calendar.appendChild(createSquare(film, i)));
 
     // Modal handling
     const modal = document.getElementById('filmModal');
@@ -304,14 +320,13 @@ films.forEach((film, i) => calendar.appendChild(createSquare(film, i)));
       modal.style.display = "flex";
     }
 
-    document.getElementById('closeModal').onclick = () => { modal.style.display = 'none'; };
+    closeModal.onclick = () => { modal.style.display = 'none'; };
     window.onclick = (e) => { if (e.target === modal) modal.style.display = 'none'; };
 
     // Smooth reset button
     const resetBtn = document.getElementById('resetBtn');
     resetBtn.addEventListener('click', () => {
       localStorage.removeItem('openedSquares');
-      localStorage.removeItem('shuffledFilms');
       location.reload();
     });
   </script>
