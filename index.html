@@ -215,7 +215,7 @@
 
     // Example 30-slot films array (3 real + 27 placeholders)
     const films = [
-      { title: "The Shining", year: 1980, image: "images/shining_scene.jpg", poster: "images/shining_poster.jpg", runtime: "146 min", rottenScore: "84%", letterboxdScore: "4.1/5", description: "A family heads to an isolated hotel...", tags: ["Psychological", "Supernatural"] },
+      { title: "The Thing", year: 1982, image: "images/thing_scene.jpg", poster: "images/thing_poster.jpg", runtime: "109 min", rottenScore: "85%", letterboxdScore: "4.4", description: "Grim, tense, terrifying - an Antarctic research team discovers a form-changing alien", tags: ["Psychological", "Monster", "Body"] },
       { title: "Halloween", year: 1978, image: "images/halloween_scene.jpg", poster: "images/halloween_poster.jpg", runtime: "91 min", rottenScore: "96%", letterboxdScore: "4.0/5", description: "Michael Myers escapes and returns...", tags: ["Slasher"] },
       { title: "The Exorcist", year: 1973, image: "images/exorcist_scene.jpg", poster: "images/exorcist_poster.jpg", runtime: "132 min", rottenScore: "83%", letterboxdScore: "4.2/5", description: "A young girl is possessed...", tags: ["Supernatural", "Horror"] },
       // 27 placeholders
@@ -232,11 +232,8 @@
       }))
     ];
 
-    // Persistent shuffle
-    let shuffledFilms = JSON.parse(localStorage.getItem('shuffledFilms'));
-    if (!shuffledFilms) {
-      shuffledFilms = shuffleArray([...films]);
-      localStorage.setItem('shuffledFilms', JSON.stringify(shuffledFilms));
+    // Persistent shuffle DISABLED - turn on later
+films.forEach((film, i) => calendar.appendChild(createSquare(film, i)));
     }
 
     const calendar = document.getElementById('calendar');
