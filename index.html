@@ -24,7 +24,7 @@ h2 {
 
 .square { background: #222 url('https://upload.wikimedia.org/wikipedia/commons/9/9b/Emoji_u1f383.svg') center/60% no-repeat; border: 2px solid #444; border-radius: 10px; aspect-ratio: 1/1; min-height: 200px; cursor: pointer; position: relative; transition: transform 0.2s; overflow: hidden; }
 .square:hover { transform: scale(1.05); }
-.square span { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 4em; color: #fff; font-family: 'Creepster', cursive; background: none; padding: 0; }
+.square span { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 8em; color: #fff; font-family: 'Creepster', cursive; background: none; padding: 0; }
 
 .revealed { display: flex; align-items: center; justify-content: center; overflow: hidden; background: #000; }
 .revealed img {
@@ -48,20 +48,20 @@ h2 {
   align-items: center;
 }
 
-/* Modal Content - Square */
+/* Modal Content - Slightly Rectangular */
 .modal-content {
   background: #222;
   padding: 20px;
   border-radius: 10px;
-  width: 500px;       /* width = height for square */
-  height: 500px;
+  height: 600px;            /* match poster max height */
+  width: 750px;             /* 25% wider than 600px */
   color: #fff;
   text-align: left;
   position: relative;
   font-size: 1.625rem;
   font-family: 'Lora', serif;
   display: flex;
-  flex-direction: row;  /* poster left, info right */
+  flex-direction: row;       /* poster left, info right */
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -113,7 +113,7 @@ h2 {
 
 /* Poster */
 .poster img {
-  max-height: 450px;   /* keeps poster size like before */
+  max-height: 600px;        /* bigger poster */
   width: auto;
   border-radius: 8px;
   object-fit: contain;
