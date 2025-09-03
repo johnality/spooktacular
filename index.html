@@ -16,7 +16,12 @@ h2 { font-family: 'Amatic SC', cursive; font-size: 4em; font-weight: normal; mar
 .square span { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 4em; color: #fff; font-family: 'Creepster', cursive; background: none; padding: 0; }
 
 .revealed { display: flex; align-items: center; justify-content: center; overflow: hidden; background: #000; }
-.revealed img { width: 100%; height: 100%; object-fit: cover; cursor: pointer; }
+.revealed img {
+  height: 100%;         /* fill vertically */
+  width: 100%;          /* still respect box width */
+  object-fit: cover;    /* crop sides if needed, never stretch */
+  cursor: pointer;
+}
 
 /* Modal */
 .modal { display: none; position: fixed; z-index: 10; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; }
@@ -482,7 +487,13 @@ function openModal(film){
   rtSpan.innerHTML = `<img class="icon" src="images/rotten_icon.png"> ${film.rottenScore}`;
   lbSpan.innerHTML = `<img class="icon" src="images/letterboxd_icon.png"> ${film.letterboxdScore}`;
   tagsP.textContent = film.tags.join(" / ");
-  modal.style.display = "flex";
+ const streamingDiv = document.getElementById('modalStreaming');
+if (film.streaming) {
+  streamingDiv.innerHTML = `<img src="${film.streaming}" alt="Streaming service logo">`;
+} else {
+  streamingDiv.innerHTML = "";
+}
+            modal.style.display = "flex";
 }
 
 closeModal.onclick = () => { modal.style.display = 'none'; };
