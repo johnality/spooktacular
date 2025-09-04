@@ -171,12 +171,7 @@ h2 {
 .stats span { display: flex; align-items: center; gap: 5px; }
 .stats img.icon { width: 30px; height: 30px; }
 
-/* Director line */
-#modalDirector {
-  font-size: 1.375rem;  /* same as stats/description */
-  margin: 5px 0;        /* consistent vertical spacing */
-}
-    
+ 
 /* Tags */
 .tags { margin-top: 10px; font-style: italic; color: #fff; text-align: left; }
 
@@ -211,7 +206,6 @@ h2 {
     <span id="rtScore"><img class="icon" src="images/rotten_icon.png"> RT%</span>
     <span id="lbScore"><img class="icon" src="images/letterboxd_icon.png"> LB%</span>
   </p>
-  <p id="modalDirector">Directed by: Name Here</p> <!-- NEW LINE -->
   <p id="modalDesc">Description goes here</p>
   <p class="tags"></p>
   <div id="modalStreaming" class="streaming-logo"></div>
@@ -230,7 +224,7 @@ let openedSquares = JSON.parse(localStorage.getItem('openedSquares')) || {};
 const films = [
   /* All your film objects remain unchanged */
 
-      {    title: "The Silence of the Lambs",    year: 1991,    image: "images/silence_scene.jpg",    poster: "images/silence_poster.jpg",    runtime: "119 min",    rottenScore: "95%",    letterboxdScore: "4.3",      director: "Dir. Jonathan Demme", description: "Part psychological thriller, part all-out horror. A psychotic genius helps the FBI track a killer.",    tags: ["Psychological"],    streaming: "images/hbo_logo3.png"},
+      {    title: "The Silence of the Lambs",    year: 1991,    image: "images/silence_scene.jpg",    poster: "images/silence_poster.jpg",    runtime: "119 min",    rottenScore: "95%",    letterboxdScore: "4.3",      description: "Part psychological thriller, part all-out horror. A psychotic genius helps the FBI track a killer.",    tags: ["Psychological"],    streaming: "images/hbo_logo3.png"},
   { title: "Malignant", year: 2021, image: "images/malignant_scene.jpg", poster: "images/malignant_poster.jpg", runtime: "111 min", rottenScore: "77%", letterboxdScore: "3.1", description: "Gory thrills and a bonkers twist. A woman is tormented by visions of grisly murder.", tags: ["Psychological", "Slasher", "Supernatural"], streaming: "images/hbo_logo3.png" }, 
   { title: "The Thing", year: 1982, image: "images/thing_scene.jpg", poster: "images/thing_poster.jpg", runtime: "109 min", rottenScore: "85%", letterboxdScore: "4.1", description: "Grim, tense, terrifying. Paranoia takes over when an Antarctic research team discovers a form-changing being.", tags: ["Psychological", "Body Horror", "Supernatural"], streaming: "images/peacock_logo.png" }, 
   { title: "The Texas Chainsaw Massacre", year: 1974, image: "images/texas_scene2.jpg", poster: "images/texas_poster.jpg", runtime: "83 min", rottenScore: "84%", letterboxdScore: "3.8", description: "Start-to-finish suspense! Demented butchers terrorize their victims in rural Texas.", tags: ["Slasher", "Folk Horror"], streaming: "images/peacock_logo.png" }, 
