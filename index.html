@@ -24,7 +24,13 @@ h2 {
   line-height: 1;      /* keeps text compact */
   color: #ddd;
 }
-.grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; max-width: 1400px; margin: 0 auto; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
 
 .square { background: #222 url('https://upload.wikimedia.org/wikipedia/commons/9/9b/Emoji_u1f383.svg') center/60% no-repeat; border: 2px solid #444; border-radius: 10px; aspect-ratio: 1/1; min-height: 200px; cursor: pointer; position: relative; transition: transform 0.2s; overflow: hidden; }
 .square:hover { transform: scale(1.05); }
@@ -309,7 +315,7 @@ function revealSquare(square, film){
   });
 }
 
-films.forEach((film,i)=>calendar.appendChild(createSquare(film,i)));
+films.slice(0, 12).forEach((film, i) => calendar.appendChild(createSquare(film, i)));
 
 const modal = document.getElementById('filmModal');
 const closeModal = document.getElementById('closeModal');
